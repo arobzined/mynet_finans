@@ -25,13 +25,9 @@ class Scraping():
 
         soup = BeautifulSoup(self.driver.page_source, "html.parser")
         rows = soup.find_all(class_ = 'mr-4')
-        i = 0
+
         for elm in rows:
-            if i == (len(rows) - 2):
-                i = 0
-            if i > 5:
-                continue
-            i += 1
+
             link = (elm.find('a').attrs)["href"]
             self.driver.get(link)
             self.wait(By.XPATH, '/html/body/section/div[1]/div[1]/div[3]/div/div[1]/div[3]/div[2]')
